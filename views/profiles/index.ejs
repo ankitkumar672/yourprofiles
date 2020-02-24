@@ -1,0 +1,14 @@
+<h2>Search Profiles</h2>
+<form action="/profiles" method="GET">
+    <label>Name</label>
+    <input type="text" name="name" value="<%= searchOption.name %>">
+    <button type="submit">Search</button>
+</form>
+<br>
+<% profiles.forEach(profile => { %>
+    <div><%= profile.name %></div>
+    <a href="/profiles/<%= profile.id %>">View</a>
+    <a href="/profiles/<%= profile.id %>/edit">Edit</a>
+    <%- include('../partials/deleteForm', 
+                { url: `/profiles/${profile.id}`}) %><%#string manipulation is used:inside of server bracket jhol%>  
+<% }) %>   
